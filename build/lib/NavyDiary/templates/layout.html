@@ -1,0 +1,33 @@
+<!doctype html>
+<title>Navy Diary</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	{% for message in get_flashed_messages() %}
+	<div class="flash">{{ message }}</div>
+	{% endfor %}
+	<div class="page">	
+	  <a href="/"><h1 id="title">Navy Diary</h1></a>  
+	  <div class="metanav">
+	  {% if not session.logged_in %}
+		[<a href="{{ url_for('login') }}">Log in</a>]
+		
+		<p style="padding-top:2em;border-top: 2px solid #eee;">This is a simple Navy diary.</p>
+		<ul style="text-align: left;">This diary includes the functions:<br>
+		<li>Add event.</li>
+		<li>Modify event.</li>
+		<li>Delete event.</li>
+		<li>Search event by dates.</li>
+		<li>Search event by subject.</li>
+		</ul>
+		<p>For checking the above stuffs please <a href="{{ url_for('login') }}">log in</a>.</p>
+		
+	  {% else %}
+		[<a href="/">Main</a> | 
+		<a href="{{ url_for('add_page') }}">Add</a> | 
+		<a href="{{ url_for('search') }}">Search</a> | 
+		<a href="{{ url_for('importdb') }}">Import</a> |
+		<a href="{{ url_for('exportdb') }}">Export</a> |
+		<a href="{{ url_for('logout') }}">Log out</a>]		
+	  {% endif %}
+	  </div>
+	  {% block body %}{% endblock %}
+	</div>

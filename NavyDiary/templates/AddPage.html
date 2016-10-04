@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}	
+	  <h2 style="border-top:2px solid #eee;padding-top:1em">Add Event</h2>
+	  <br>	
+		  <form action="{{ url_for('add_entry') }}" method="post">
+			  <dl>
+				<dt>Date
+				<dd><input type="text" size="30" placeholder="DD/MM/YYYY" name="date">
+				<dt>Subject
+				<dd><input type="text" size="30" name="subject">
+				<dt>Content
+				<dd><input type="text" name="text" size="30"></textarea>				
+				<dd><input type="submit" value="Add Event">
+			  </dl>
+		</form>	
+		<br>		
+  {% endif %}
+{% endblock %}

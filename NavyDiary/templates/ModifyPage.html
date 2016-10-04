@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('update') }}" method="post" >
+      <dl>
+		<dt>Date
+        <dd><input type="text" size="30" placeholder="DD/MM/YYYY" name="date" value={{ entries[0].ddate }}/{{ entries[0].mdate }}/{{ entries[0].ydate }} >
+		<dt>Subject
+        <dd><input type="text" size="30" name="subject" value={{ entries[0].subject }}>
+        <dt>Content
+        <dd><input name="text" size="30" value={{ entries[0].text }}>
+		<input type="hidden" name="id" value={{ entries[0].id }}>
+        <dd><input type="submit" value="Update">
+      </dl>
+    </form>
+  {% endif %}
+{% endblock %}

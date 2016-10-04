@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}	
+	  <h2 style="border-top:2px solid #eee;padding-top:1em">Search</h2>
+	  <br>	
+	  <div class="searchArea">
+		<form style="text-align: left" action="{{ url_for('search_by_subject') }}" method="post">				
+			<input type="text" name="subject" placeholder="Search by subject">		
+			<button type="submit">Go!</button>			
+		</form>	
+		<br>
+		<form style="text-align: left" action="{{ url_for('search_by_content') }}" method="post">				
+			<input type="text" name="text" placeholder="Search by content">		
+			<button type="submit">Go!</button>			
+		</form>	
+		<br>
+		<form style="text-align: left" action="{{ url_for('search_by_date') }}" method="post">				
+			<input type="text" name="date" size="25" placeholder="Search by date (DD/MM/YYYY)">		
+			<button type="submit">Go!</button>			
+		</form>	
+		<br>
+		<form style="text-align: left" action="{{ url_for('search_by_dates_range') }}" method="post">				
+			<input type="text" name="FDate" placeholder="From date (DD/MM/YYYY)">		
+			<input type="text" name="TDate" placeholder="To date (DD/MM/YYYY)">		
+			<button type="submit">Go!</button>			
+		</form>	
+		</div>		
+		<br>		
+  {% endif %}
+{% endblock %}

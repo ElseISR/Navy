@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+  <ul class="entries">
+  {% for entry in entries %}	
+	<li><h2>{{ entry.ddate }}/{{ entry.mdate }}/{{ entry.ydate }} </h2><h3>{{ entry.subject }}</h3>{{ entry.text|safe }}<br></li>	
+	<table>
+	  <tr>
+		<td>
+			<form action="{{ url_for('modify') }}" method="post">
+				<input type="hidden" name="id" value="{{ entry.id }}">
+				<input type="submit" value="Modify">
+			</form>		
+		</td>
+		<td>
+			<form action="{{ url_for('delete') }}" method="post">
+				<input type="hidden" name="id" value="{{ entry.id }}">
+				<input type="submit" value="Delete">
+			</form>		
+		</td>
+	  </tr>	  
+	</table>	
+  {% else %}
+    <li><em>No events</em></li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+{% endblock %}

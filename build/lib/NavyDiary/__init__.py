@@ -1,0 +1,1 @@
+from NavyDiary import app

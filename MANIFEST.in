@@ -1,0 +1,3 @@
+graft NavyDiary/templates
+graft NavyDiary/static
+include NavyDiary/schema.sql
